@@ -24,6 +24,20 @@ from nltk.stem import PorterStemmer
 
 # PART A
 
+'''- Pull the sample.txt file from the class Github repository and unzip it. Note this assignment is intended to deepen your learning of using argparse for parsing command-line arguments. 
+- Write your Python script in a way that I can run it with parser in the terminal. The sample.txt is the argument for the parser.
+Here's beginning of the code 
+import argparse
+import os
+import pandas as pd
+import re
+
+#Split a text (string) into a list of sentences.
+def extract_sentences(text):
+sentences = re.split(r'(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?|\!)\s', text)
+return sentences
+- The solution at the end should make a directory with the name of Text Feature. You need to read the sample.txt in your solution script file and then decompose the text to the sentence level by the basic rules. Save the results in the pandas dataframe which rows are the sentences and the column is the number of words in the sentence. Save the pandas dataframe in to csv file named sent.csv in to the text feature directory.'''
+
 # Split text into sentences
 def extract_sentences(text: str):
     pattern = r'(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?|\!)\s'
@@ -74,6 +88,22 @@ if __name__ == "__main__":
 
 # PART B
 
+'''
+Part B.
+For this part, you will u se NLTK to explore the Moby Dick text.
+i. Analyzing Moby Dick text. Load the moby.txt file into python environment. (Load the raw data or Use the NLTK Text object)
+ii. Tokenize the text into words. How many tokens (words and punctuation symbols) are in it?
+iii. How many unique tokens (unique words and punctuation) does the text have?
+iv. After lemmatizing the verbs, how many unique tokens does it have?
+v. What is the lexical diversity of the given text input?
+vi. What percentage of tokens is ’whale’or ’Whale’?
+vii. What are the 20 most frequently occurring (unique) tokens in the text? What is their frequency?
+viii. What tokens have a length of greater than 6 and frequency of more than 160?
+ix. Find the longest word in the text and that word’s length.
+x. What unique words have a frequency of more than 2000? What is their frequency?
+xi. What is the average number of tokens per sentence?
+xii. What are the 5 most frequent parts of speech in this text? What is their frequency?
+'''
 # i) Load Moby Dick
 tokens = list(text1)
 
@@ -147,6 +177,19 @@ for tag, c in top5_pos: print(f"   {tag}: {c}")
 
 # PART C
 
+'''
+
+Part C.
+Lets get some text file from the Benjamin Franklin wiki page.
+i. Write a function that scrape the web page and return the raw text file.
+ii. Use BeautifulSoup to get text file and clean the html file.
+iii. Write a function called unknown, which removes any items from this set that occur in the Words Corpus (nltk.corpus.words).
+iv. Find a list of novel words.
+v. Use the porter stemmer to stem all the items in novel words the go through the unknown function, saving the result as novel-stems.
+vi. Find as many proper names from novel-stems as possible, saving the result as proper names.
+
+'''
+
 url = "https://en.wikipedia.org/wiki/Benjamin_Franklin"
 resp = requests.get(url, headers={"User-Agent": "Mozilla/5.0"})
 html = resp.text
@@ -195,6 +238,16 @@ print(len(proper_names))
 #%%
 
 # PART D
+
+'''
+Part D.
+In part of this exercise, you will use the twitter data.
+i. Load the data from the class repository and view the first few sentences.
+ii. Split data into sentences using ”\n” as the delimiter.
+iii. Tokenize sentences (split a sentence into a list of words). Convert all tokens into lower case so that words which are capitalized
+iv. Split data into training and test sets.
+v. Count how many times each word appears in the data.
+'''
 
 # i. Load the data from the class repository and view the first few sentences
 filename = "twitter.txt"
